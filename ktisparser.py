@@ -40,7 +40,7 @@ class KTISParser:
 
     def login(self, options=None):
         self.driver = webdriver.Chrome('./driver/chromedriver.exe',
-                                       options=options)
+                                       chrome_options=options)
         # KTIS 메인 홈페이지
         self.driver.get('https://ktis.kookmin.ac.kr')
 
