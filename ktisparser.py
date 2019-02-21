@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from platform import platform
+
 # Import Selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -39,8 +41,14 @@ class KTISParser:
         return options
 
     def login(self, options=None):
-        self.driver = webdriver.Chrome('./driver/chromedriver.exe',
+        driver_path = './driver/chromedriver'
+        if platform().split("-")[0] == "Windows":
+            driver_path += ".exe"
+        print(driver_path)
+
+        self.driver = webdriver.Chrome(driver_path,
                                        chrome_options=options)
+        
         # KTIS 메인 홈페이지
         self.driver.get('https://ktis.kookmin.ac.kr')
 
